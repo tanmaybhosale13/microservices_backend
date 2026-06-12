@@ -8,6 +8,10 @@ build/
 .idea/
 *.iml
 
+# private key ec2 instance
+*.pem
+
+
 # VS Code
 .vscode/
 
