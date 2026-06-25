@@ -7,13 +7,17 @@ services:
       - "8761:8761"
     networks:
       - microservice-network
-
   config-server:
     build: ./config-server
     image: config-server:v1
     container_name: config-server
     ports:
       - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
+      - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:/app/config # ▲ Points Spring to the container directory
+    volumes:
+      - ./config-repo:/app/config # ▲ Mounts your local config-repo folder into the container
     networks:
       - microservice-network
 
