@@ -13,7 +13,6 @@ services:
           memory: 160M
     networks:
       - microservice-network
-
   config-server:
     build: ./config-server
     image: config-server:v1
@@ -21,11 +20,18 @@ services:
     ports:
       - "8888:8888"
     environment:
+<<<<<<< HEAD
       - JAVA_OPTS=-Xms64m -Xmx128m
     deploy:
       resources:
         limits:
           memory: 160M
+=======
+      - SPRING_PROFILES_ACTIVE=native
+      - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:/app/config # ▲ Points Spring to the container directory
+    volumes:
+      - ./config-repo:/app/config # ▲ Mounts your local config-repo folder into the container
+>>>>>>> 81d4ee2f2f607a953925ae3d0c591b54accbc8c4
     networks:
       - microservice-network
 
