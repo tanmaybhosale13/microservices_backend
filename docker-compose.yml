@@ -40,7 +40,7 @@ services:
     image: api-gateway:v1
     container_name: api-gateway
     ports:
-      - "8770:8080"
+      - "8770:8770"
     networks:
       - microservice-network
 
