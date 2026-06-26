@@ -40,7 +40,10 @@ services:
     image: api-gateway:v1
     container_name: api-gateway
     ports:
-      - "8770:8770"
+      - "8770:8080"
+    depends_on:
+      - config-server
+      - eureka-server
     networks:
       - microservice-network
 
